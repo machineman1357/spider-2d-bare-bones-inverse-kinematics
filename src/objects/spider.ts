@@ -12,7 +12,10 @@ const mouse = new Phaser.Math.Vector2(0, 0);
 
 const rad = (deg): number => (deg * Math.PI) / 180;
 
-const DEBUG_LIMB_START_AND_END = false;
+const DEBUG_LIMB_START_AND_END = true;
+const LEGS_OSCILLATE_AMPLITUDE = 5;
+const LEGS_OSCILLATE_FREQUENCY = 70;
+const LIMBS_LENGTH = 80;
 
 class Joint {
     pos: Phaser.Math.Vector2;
@@ -149,9 +152,7 @@ class Limb {
     }
 
     oscillateLimbEndTarget(): void {
-        const amplitude = 10;
-        const frequency = 70;
-        const wave = amplitude * Math.sin((this.oscillateTime * this.oscillateDir) / frequency);
+        const wave = LEGS_OSCILLATE_AMPLITUDE * Math.sin((this.oscillateTime * this.oscillateDir) / LEGS_OSCILLATE_FREQUENCY);
         this.limbEndTarget.x += wave;
     }
 
@@ -245,17 +246,15 @@ export default class Spider {
 
         // top right leg
         const leftSide_leg0_bodyPosition = new Phaser.Math.Vector2(0, -10);
-        const leftSide_leg0_targetPosition = new Phaser.Math.Vector2(100, -200);
+        const leftSide_leg0_targetPosition = new Phaser.Math.Vector2(70, -200);
 
         // top middle leg
         const leftSide_leg1_bodyPosition = new Phaser.Math.Vector2(-10, -15);
-        const leftSide_leg1_targetPosition = new Phaser.Math.Vector2(30, -220);
+        const leftSide_leg1_targetPosition = new Phaser.Math.Vector2(0, -220);
 
         // top left leg
         const leftSide_leg2_bodyPosition = new Phaser.Math.Vector2(-20, -10);
-        const leftSide_leg2_targetPosition = new Phaser.Math.Vector2(-90, -200);
-
-        const limbsLength = 80;
+        const leftSide_leg2_targetPosition = new Phaser.Math.Vector2(-70, -200);
 
         // right legs (left side)
         // right top
@@ -264,7 +263,7 @@ export default class Spider {
                 leftSide_leg0_bodyPosition.x + allOffset.x,
                 leftSide_leg0_bodyPosition.y + allOffset.y,
                 4,
-                limbsLength,
+                LIMBS_LENGTH,
                 leftSide_leg0_targetPosition,
                 1
             )
@@ -275,7 +274,7 @@ export default class Spider {
                 leftSide_leg1_bodyPosition.x + allOffset.x,
                 leftSide_leg1_bodyPosition.y + allOffset.y,
                 4,
-                limbsLength,
+                LIMBS_LENGTH,
                 leftSide_leg1_targetPosition,
                 -1
             )
@@ -286,7 +285,7 @@ export default class Spider {
                 leftSide_leg2_bodyPosition.x + allOffset.x,
                 leftSide_leg2_bodyPosition.y + allOffset.y,
                 4,
-                limbsLength,
+                LIMBS_LENGTH,
                 leftSide_leg2_targetPosition,
                 1
             )
@@ -299,7 +298,7 @@ export default class Spider {
                 leftSide_leg0_bodyPosition.x + allOffset.x,
                 -leftSide_leg0_bodyPosition.y - allOffset.y,
                 4,
-                limbsLength,
+                LIMBS_LENGTH,
                 new Phaser.Math.Vector2(leftSide_leg0_targetPosition.x, -leftSide_leg0_targetPosition.y),
                 1
             )
@@ -310,7 +309,7 @@ export default class Spider {
                 leftSide_leg1_bodyPosition.x + allOffset.x,
                 -leftSide_leg1_bodyPosition.y - allOffset.y,
                 4,
-                limbsLength,
+                LIMBS_LENGTH,
                 new Phaser.Math.Vector2(leftSide_leg1_targetPosition.x, -leftSide_leg1_targetPosition.y),
                 -1
             )
@@ -321,7 +320,7 @@ export default class Spider {
                 leftSide_leg2_bodyPosition.x + allOffset.x,
                 -leftSide_leg2_bodyPosition.y - allOffset.y,
                 4,
-                limbsLength,
+                LIMBS_LENGTH,
                 new Phaser.Math.Vector2(leftSide_leg2_targetPosition.x, -leftSide_leg2_targetPosition.y),
                 1
             )
