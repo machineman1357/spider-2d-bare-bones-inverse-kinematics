@@ -8,7 +8,7 @@ https://user-images.githubusercontent.com/16969890/186296046-5aae6055-39dc-45b6-
 ## Eye Candy
 This is an example of the project being used in my personal project.
 
-https://user-images.githubusercontent.com/16969890/186296073-40de1d82-0b43-46d6-9f23-ce42e141a9ff.mp4
+https://user-images.githubusercontent.com/16969890/187018149-f20cff2d-32a9-4c95-9fd7-666f331bf0e9.mp4
 
 Another personal project example.
 
